@@ -76,7 +76,7 @@ router.post('/', (req, res) => {
       tagIds: [1, 2, 3, 4]
     }
   */
- console.log(JSON.stringify(req.body))
+ console.log((req.body))
   Product.create(req.body)
   /*  console.log("req body"+req.body+ JSON.stringify(req.body.product_name));
     console.log("req price"+ req.body.price+ parseFloat(JSON.stringify(req.body.price)));
@@ -167,7 +167,7 @@ router.delete('/:id', (req, res) => {
   })
   .then(productData => {
     if (!productData) {
-      res.status(404).json({ message: 'No Product found with this id' });
+      res.status(404).json({ message: 'Product does not exists for this id' });
       return;
     }
     res.json(productData);
