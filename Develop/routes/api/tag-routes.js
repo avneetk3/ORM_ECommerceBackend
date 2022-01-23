@@ -7,6 +7,7 @@ router.get('/', (req, res) => {
   // find all tags
   // be sure to include its associated Product data
   Tag.findAll({
+    //include products
     include: [
       {
         model: Product,
@@ -29,6 +30,7 @@ router.get('/:id', (req, res) => {
     where: {
       id: req.params.id
     },
+    //include products
     include: [
       {
         model: Product,
@@ -38,7 +40,7 @@ router.get('/:id', (req, res) => {
   })
   .then(TagData => {
     if (!TagData) {
-      res.status(404).json({ message: 'No Tag found with this id' });
+      res.status(404).json({ message: 'Tag does not exists for this id' });
       return;
     }
     res.json(TagData);
@@ -76,7 +78,7 @@ router.put('/:id', (req, res) => {
   )
   .then(TagData => {
     if (!TagData) {
-        res.status(404).json({ message: 'No Tag found with this id' });
+        res.status(404).json({ message: 'Tag does not exists for this id' });
         return;
     }
     res.json(TagData);
@@ -96,7 +98,7 @@ router.delete('/:id', (req, res) => {
   })
   .then(TagData => {
     if (!TagData) {
-        res.status(404).json({ message: 'No Tag found with this id' });
+        res.status(404).json({ message: 'Tag does not exists for this id with this id' });
         return;
     }
     res.json(TagData);
