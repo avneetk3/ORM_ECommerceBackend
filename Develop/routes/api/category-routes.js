@@ -36,7 +36,7 @@ router.get('/:id', (req, res) => {
   })
   .then(categoryData => {
     if (!categoryData) {
-      res.status(404).json({ message: 'No Category found with this id' });
+      res.status(404).json({ message: 'Category id not found' });
       return;
   }
     res.json(categoryData)
@@ -50,9 +50,9 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   // create a new category
-  Category.create({
-    category_name: req.body.category_name
-  })
+  console.log(req.body.category_name)
+  Category.create(req.body.category_name
+  )
   .then(categoryData => res.json(categoryData))
   .catch(err => {
     console.log(err);
@@ -74,7 +74,7 @@ router.put('/:id', (req, res) => {
   )
   .then(categoryData => {
     if (!categoryData) {
-        res.status(404).json({ message: 'No Category found with this id' });
+        res.status(404).json({ message: 'Category Id not found' });
         return;
     }
     res.json(categoryData);
@@ -94,7 +94,7 @@ router.delete('/:id', (req, res) => {
   })
   .then(categoryData => {
     if (!categoryData) {
-        res.status(404).json({ message: 'No Category found with this id' });
+        res.status(404).json({ message: 'Category Id not found' });
         return;
     }
     res.json(categoryData);
